@@ -12,6 +12,7 @@ const authOptions = {
 };
 
 const handler = NextAuth(authOptions);
+const value: string | undefined = process.env.SOME_ENV;
 
 export { handler as GET, handler as POST };
 // Do NOT: export { authOptions }
