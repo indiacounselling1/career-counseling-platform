@@ -1,4 +1,3 @@
-import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 
 const authOptions = {
@@ -8,10 +7,7 @@ const authOptions = {
       clientSecret: process.env.GITHUB_CLIENT_SECRET
     })
   ],
-  // ... any other configuration here
+  // ...any other config
 };
 
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
-// Do NOT: export { authOptions }
+export default authOptions;
