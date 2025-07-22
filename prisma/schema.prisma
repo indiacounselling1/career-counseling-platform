@@ -24,7 +24,7 @@ model User {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String
-  role      String
+  role      UserRole
   password  String?   // <- add this line
   bookings  Booking[]
   createdAt DateTime @default(now())
@@ -50,5 +50,4 @@ model Booking {
   pathwayId     String
   bookedAt      DateTime           @default(now())
   scheduledFor  DateTime
-  status        String
-}
+  status        BookingStatus}
