@@ -24,12 +24,14 @@ model User {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String
-  role      UserRole
-  password  String?   // <- add this line
+  role      UserRole @default(student)
+  password  String?  // Optional for OAuth users
   bookings  Booking[]
   createdAt DateTime @default(now())
-}
+  updatedAt DateTime @updatedAt
 
+  @@map("users")
+}
 
 model EducationalPathway {
   id          String   @id @default(uuid())
@@ -40,14 +42,24 @@ model EducationalPathway {
   careers     String[] // Array of career options
   eligibility String?
   bookings    Booking[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("educational_pathways")
 }
 
 model Booking {
   id            String             @id @default(uuid())
-  user          User               @relation(fields: [userId], references: [id])
+  user          User               @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId        String
-  pathway       EducationalPathway @relation(fields: [pathwayId], references: [id])
+  pathway       EducationalPathway @relation(fields: [pathwayId], references: [id], onDelete: Cascade)
   pathwayId     String
   bookedAt      DateTime           @default(now())
   scheduledFor  DateTime
-  status        BookingStatus}
+  status        BookingStatus      @default(pending)
+  notes         String?
+  createdAt     DateTime           @default(now())
+  updatedAt     DateTime           @updatedAt
+
+  @@map("bookings")
+}

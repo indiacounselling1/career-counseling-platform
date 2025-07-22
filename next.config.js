@@ -1,11 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ...other Next.js config
-  webpack: (config) => {
-    config.resolve.fallback = { fs: false };
-    return config;
+  experimental: {
+    appDir: true,
   },
-};
+}
 
-module.exports = nextConfig;
-
+module.exports = nextConfig

@@ -1,53 +1,122 @@
-"use client";
-import { useState } from "react";
+'use client';
 
-type Props = {
-  userId?: string;      // Optional: prefill from session (add later)
-  pathwayId?: string;   // Optional: link to chosen pathway (add later)
-};
-export default function BookingForm(props: Props) {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [date, setDate] = useState("");
-  const [status, setStatus] = useState<"idle"|"pending"|"success"|"error">("idle");
+import { useState } from 'react';
+import { EducationalPathway, BookingFormData } from '@/types';
 
-  async function handleSubmit(e: React.FormEvent) {
+interface BookingFormProps {
+  pathways: EducationalPathway[];
+}
+
+export function BookingForm({ pathways }: BookingFormProps) {
+  const [formData, setFormData] = useState<BookingFormData>({
+    pathwayId: '',
+    scheduledFor: '',
+    notes: '',
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setStatus("pending");
+    setIsSubmitting(true);
+    setMessage(null);
+
     try {
-      const res = await fetch("/api/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, date }),
+      const response = await fetch('/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       });
-      if (res.ok) setStatus("success");
-      else setStatus("error");
-    } catch {
-      setStatus("error");
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setMessage({ type: 'success', text: 'Booking created successfully!' });
+        setFormData({ pathwayId: '', scheduledFor: '', notes: '' });
+      } else {
+        setMessage({ type: 'error', text: data.error || 'Failed to create booking' });
+      }
+    } catch (error) {
+      setMessage({ type: 'error', text: 'An unexpected error occurred' });
+    } finally {
+      setIsSubmitting(false);
     }
-  }
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+  };
 
   return (
-    <form onSubmit={handleSubmit} className="p-6 bg-slate-50 rounded shadow max-w-md mx-auto space-y-4">
-      <h3 className="text-xl font-semibold">Book a Counseling Session</h3>
+    <form onSubmit={handleSubmit} className="space-y-4">
       <div>
-        <label className="block mb-1">Name</label>
-        <input value={name} onChange={e=>setName(e.target.value)} required className="border p-2 w-full rounded" />
+        <label htmlFor="pathwayId" className="block text-sm font-medium text-gray-700 mb-1">
+          Educational Pathway
+        </label>
+        <select
+          id="pathwayId"
+          name="pathwayId"
+          value={formData.pathwayId}
+          onChange={handleChange}
+          required
+          className="input-field"
+        >
+          <option value="">Select a pathway</option>
+          {pathways.map((pathway) => (
+            <option key={pathway.id} value={pathway.id}>
+              {pathway.course} - {pathway.className} ({pathway.stream})
+            </option>
+          ))}
+        </select>
       </div>
+
       <div>
-        <label className="block mb-1">Email</label>
-        <input type="email" value={email} onChange={e=>setEmail(e.target.value)} required className="border p-2 w-full rounded" />
+        <label htmlFor="scheduledFor" className="block text-sm font-medium text-gray-700 mb-1">
+          Preferred Date & Time
+        </label>
+        <input
+          type="datetime-local"
+          id="scheduledFor"
+          name="scheduledFor"
+          value={formData.scheduledFor}
+          onChange={handleChange}
+          required
+          min={new Date().toISOString().slice(0, 16)}
+          className="input-field"
+        />
       </div>
+
       <div>
-        <label className="block mb-1">Preferred Date & Time</label>
-        <input type="datetime-local" value={date} onChange={e=>setDate(e.target.value)} required className="border p-2 w-full rounded" />
+        <label htmlFor="notes" className="block text-sm font-medium text-gray-700 mb-1">
+          Additional Notes (Optional)
+        </label>
+        <textarea
+          id="notes"
+          name="notes"
+          value={formData.notes}
+          onChange={handleChange}
+          rows={3}
+          className="input-field"
+          placeholder="Any specific topics you'd like to discuss..."
+        />
       </div>
-      <button type="submit" className="btn btn--primary w-full" disabled={status==="pending"}>
-        {status==="pending" ? "Booking..." : "Book Session"}
+
+      {message && (
+        <div className={`p-3 rounded ${message.type === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'}`}>
+          {message.text}
+        </div>
+      )}
+
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        {isSubmitting ? 'Booking...' : 'Book Session'}
       </button>
-      {status==="success" && <div className="text-green-600 pt-2">Booking successful!</div>}
-      {status==="error" && <div className="text-red-600 pt-2">Booking failed. Try again.</div>}
     </form>
   );
 }
-
