@@ -1,0 +1,40 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  role      String   // e.g. 'student' | 'counselor' | 'admin'
+  bookings  Booking[]
+  createdAt DateTime @default(now())
+}
+
+model EducationalPathway {
+  id          String   @id @default(uuid())
+  className   String   // 9th/10th/11th/12th, etc.
+  stream      String   // Science, Commerce, Arts, etc.
+  course      String   // e.g. B.Tech, MBBS, etc.
+  colleges    String[] // Array of college names for now (can improve later)
+  careers     String[] // Array of career options for now
+  eligibility String?
+  bookings    Booking[]
+}
+
+model Booking {
+  id                String   @id @default(uuid())
+  user              User     @relation(fields: [userId], references: [id])
+  userId            String
+  pathway           EducationalPathway @relation(fields: [pathwayId], references: [id])
+  pathwayId         String
+  bookedAt          DateTime @default(now())
+  scheduledFor      DateTime
+  status            String   // e.g. "pending", "confirmed", "completed"
+}
+

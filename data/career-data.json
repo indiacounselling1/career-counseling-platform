@@ -1,0 +1,16 @@
+{
+  "class9": {
+    "description": "Foundation year",
+    "focus": ["Career awareness", "Skill development"]
+  },
+  "employmentStats": {
+    "india": {
+      "overallUnemployment": "3.2%",
+      "youthUnemployment": "10.2%"
+    },
+    "haryana": {
+      "overallUnemployment": "4.1%",
+      "youthUnemployment": "11.2%"
+    }
+  }
+}

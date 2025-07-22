@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>IndiaCounselling – India's Most Comprehensive Career Guidance Platform</title>
+  <meta name="description" content="From 9th Grade to Your Dream Job. Career guidance with real employment data, salary insights, and expert counselors across India." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h2>🎯 India Counselling</h2>
+                </div>
+                <nav class="nav desktop-nav">
+                    <a href="#home">Home</a>
+                    <a href="#career-paths">Career Paths</a>
+                    <a href="#counselors">Find Counselors</a>
+                    <a href="#aptitude">Aptitude Test</a>
+                    <a href="#about">About</a>
+                    <a href="#contact">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button class="btn btn--outline btn--sm">Login</button>
+                    <button class="btn btn--primary btn--sm">Sign Up</button>
+                    <button class="mobile-menu-btn" id="mobileMenuBtn">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+            <nav class="nav mobile-nav" id="mobileNav">
+                <a href="#home">Home</a>
+                <a href="#career-paths">Career Paths</a>
+                <a href="#counselors">Find Counselors</a>
+                <a href="#aptitude">Aptitude Test</a>
+                <a href="#about">About</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Discover Your Perfect Career Path</h1>
+                <p class="hero-subtitle">From 9th Grade to Your Dream Job - India's Most Comprehensive Career Guidance Platform</p>
+                <div class="hero-actions">
+                    <button class="btn btn--primary btn--lg" onclick="scrollToSection('aptitude')">Take Free Aptitude Test</button>
+                    <button class="btn btn--outline btn--lg" onclick="scrollToSection('counselors')">Book Counseling Session</button>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">10,000+</div>
+                        <div class="stat-label">Students Guided</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Expert Counselors</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">95%</div>
+                        <div class="stat-label">Satisfaction Rate</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employment Statistics section inserted just after the hero section -->
+    <section id="employment-stats" class="employment-stats">
+      <div class="container">
+        <div class="section-header">
+          <h2>Real Employment Statistics</h2>
+          <p>Make informed career decisions with current employment data for India and Haryana</p>
+        </div>
+        <div class="stats-grid">
+          <!-- INDIA BLOCK -->
+          <div class="stats-region">
+            <h3>India Statistics</h3>
+            <div class="stats-cards">
+              <div class="stat-card"><div class="stat-icon">📊</div><div class="stat-value">3.2%</div><div class="stat-label">Overall Unemployment</div></div>
+              <div class="stat-card"><div class="stat-icon">👨‍🎓</div><div class="stat-value">10.2%</div><div class="stat-label">Youth Unemployment</div></div>
+              <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-value">₹22-35k</div><div class="stat-label">Organized Sector Salary</div></div>
+              <div class="stat-card"><div class="stat-icon">🏭</div><div class="stat-value">8-10%</div><div class="stat-label">Organized Workforce</div></div>
+            </div>
+          </div>
+          <!-- HARYANA BLOCK -->
+          <div class="stats-region">
+            <h3>Haryana Statistics</h3>
+            <div class="stats-cards">
+              <div class="stat-card"><div class="stat-icon">📊</div><div class="stat-value">4.1%</div><div class="stat-label">Overall Unemployment</div></div>
+              <div class="stat-card"><div class="stat-icon">👨‍🎓</div><div class="stat-value">11.2%</div><div class="stat-label">Youth Unemployment</div></div>
+              <div class="stat-card"><div class="stat-icon">💰</div><div class="stat-value">₹25-40k</div><div class="stat-label">Organized Sector Salary</div></div>
+              <div class="stat-card"><div class="stat-icon">🏠</div><div class="stat-value">₹29,432</div><div class="stat-label">Per-Capita Income / month</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Career Path Explorer -->
+    <section class="career-explorer" id="career-paths">
+        <div class="container">
+            <div class="section-header">
+                <h2>Start Your Career Journey</h2>
+                <p>Explore career paths from 9th grade onwards with our interactive guidance system</p>
+            </div>
+
+            <!-- Education System Chart -->
+            <div class="chart-container">
+                <img src="indian_education_system.png" alt="Indian Education System Pathways" class="education-chart">
+            </div>
+
+            <div class="class-selector">
+                <h3>Choose Your Current Class Level</h3>
+                <div class="class-grid">
+                    <div class="class-card" data-class="9th">
+                        <div class="class-icon">📚</div>
+                        <h4>9th Grade</h4>
+                        <p>Foundation year - explore interests and prepare for stream selection</p>
+                        <button class="btn btn--secondary">Explore Options</button>
+                    </div>
+                    <div class="class-card" data-class="10th">
+                        <div class="class-icon">🎯</div>
+                        <h4>10th Grade</h4>
+                        <p>Board exams and stream selection preparation</p>
+                        <button class="btn btn--secondary">Explore Options</button>
+                    </div>
+                    <div class="class-card" data-class="11th-12th">
+                        <div class="class-icon">🚀</div>
+                        <h4>11th-12th</h4>
+                        <p>Specialized streams leading to career paths</p>
+                        <button class="btn btn--secondary">Explore Options</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stream Selection -->
+            <div class="stream-selector hidden" id="streamSelector">
+                <h3>Choose Your Stream</h3>
+                <div class="stream-grid" id="streamGrid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Course Selection -->
+            <div class="course-selector hidden" id="courseSelector">
+                <h3>Available Courses</h3>
+                <div class="course-grid" id="courseGrid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Career Options -->
+            <div class="career-selector hidden" id="careerSelector">
+                <h3>Career Opportunities</h3>
+                <div class="career-grid" id="careerGrid">
+                    <!-- Dynamic content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>One-Stop Career Solution</h2>
+                <p>Everything you need to make informed career decisions</p>
+            </div>
+            <div class="features-grid" id="featuresGrid">
+                <!-- Features will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Counselors Section -->
+    <section class="counselors" id="counselors">
+        <div class="container">
+            <div class="section-header">
+                <h2>Meet Our Expert Counselors</h2>
+                <p>Connect with verified career counselors across India</p>
+            </div>
+            <div class="counselors-grid" id="counselorsGrid">
+                <!-- Counselors will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Aptitude Test Preview -->
+    <section class="aptitude-test" id="aptitude">
+        <div class="container">
+            <div class="aptitude-content">
+                <div class="aptitude-text">
+                    <h2>Take Our Free Aptitude Test</h2>
+                    <p>Discover your strengths, interests, and ideal career matches with our scientifically designed assessment.</p>
+                    <ul class="aptitude-features">
+                        <li>✓ 50+ comprehensive questions</li>
+                        <li>✓ Personality & interest assessment</li>
+                        <li>✓ Detailed career recommendations</li>
+                        <li>✓ Instant results with insights</li>
+                    </ul>
+                    <button class="btn btn--primary btn--lg">Start Aptitude Test</button>
+                </div>
+                <div class="aptitude-preview">
+                    <div class="test-sample">
+                        <h4>Sample Question</h4>
+                        <p>Which activity interests you most?</p>
+                        <div class="test-options">
+                            <label><input type="radio" name="sample" value="coding"> Programming & Technology</label>
+                            <label><input type="radio" name="sample" value="research"> Research & Analysis</label>
+                            <label><input type="radio" name="sample" value="creative"> Creative & Design</label>
+                            <label><input type="radio" name="sample" value="business"> Business & Management</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+<div id="bookingModal" class="modal"> ... </div>
+
+    <!-- Success Stories -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Success Stories</h2>
+                <p>Hear from students who found their perfect career path with us</p>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid">
+                <!-- Testimonials will be loaded dynamically -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Ready to Start Your Career Journey?</h2>
+                <p>Join thousands of students who have found their perfect career path</p>
+                <div class="cta-actions">
+                    <button class="btn btn--primary btn--lg">Book Free Consultation</button>
+                    <button class="btn btn--outline btn--lg">View Membership Plans</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>🎯 India Counselling</h3>
+                    <p>India's most comprehensive career guidance platform helping students make informed career decisions.</p>
+                    <div class="social-links">
+                        <a href="#" target="_blank">Facebook</a>
+                        <a href="#" target="_blank">Twitter</a>
+                        <a href="#" target="_blank">LinkedIn</a>
+                        <a href="#" target="_blank">Instagram</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#career-paths">Career Paths</a></li>
+                        <li><a href="#counselors">Counselors</a></li>
+                        <li><a href="#aptitude">Aptitude Test</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Career Counseling</a></li>
+                        <li><a href="#">Aptitude Testing</a></li>
+                        <li><a href="#">College Selection</a></li>
+                        <li><a href="#">Skill Assessment</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p>📧 info@IndiaCounselling.com</p>
+                    <p>📞 +91-800-123-4567</p>
+                    <p>📍 Mumbai, Delhi, Bangalore</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 India Counselling. Made in India 🇮🇳 for Indian Students</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="bookingModal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span id="closeBooking" class="close">&times;</span>
+        <h2>Book a Counseling Session</h2>
+        <form id="bookingForm">
+          <label>Name <input type="text" id="bookingName" required /></label>
+          <label>Email <input type="email" id="bookingEmail" required /></label>
+          <label>Phone <input type="tel" id="bookingPhone" required /></label>
+          <label>Preferred Date &amp; Time <input type="datetime-local" id="bookingDate" required /></label>
+          <!-- dynamically injected counselor list is added by app.js -->
+          <button type="submit">Book Session</button>
+          <div id="bookingStatus"></div>
+        </form>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
